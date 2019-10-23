@@ -1,2 +1,2 @@
 puts "hola mundo"
-gets()
+gets

@@ -1,0 +1,3 @@
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\obj\Debug\netcoreapp3.0\fund-Alvarez-Ramirez-Juan-Daniel.csprojAssemblyReference.cache
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\obj\Debug\netcoreapp3.0\fund-Alvarez-Ramirez-Juan-Daniel.AssemblyInfoInputs.cache
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\obj\Debug\netcoreapp3.0\fund-Alvarez-Ramirez-Juan-Daniel.AssemblyInfo.cs

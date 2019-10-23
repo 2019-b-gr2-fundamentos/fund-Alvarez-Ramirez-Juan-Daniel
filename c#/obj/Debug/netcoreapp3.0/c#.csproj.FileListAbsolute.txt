@@ -1,0 +1,11 @@
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\bin\Debug\netcoreapp3.0\c#.exe
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\bin\Debug\netcoreapp3.0\c#.deps.json
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\bin\Debug\netcoreapp3.0\c#.runtimeconfig.json
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\bin\Debug\netcoreapp3.0\c#.runtimeconfig.dev.json
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\bin\Debug\netcoreapp3.0\c#.dll
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\bin\Debug\netcoreapp3.0\c#.pdb
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\obj\Debug\netcoreapp3.0\c#.csprojAssemblyReference.cache
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\obj\Debug\netcoreapp3.0\c#.AssemblyInfoInputs.cache
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\obj\Debug\netcoreapp3.0\c#.AssemblyInfo.cs
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\obj\Debug\netcoreapp3.0\c#.dll
+C:\Users\USREPS\Desktop\fund-Alvarez-Ramirez-Juan-Daniel\c#\obj\Debug\netcoreapp3.0\c#.pdb
