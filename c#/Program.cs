@@ -8,6 +8,7 @@ namespace c_
         { 
             object hola = "ella";
             Console.WriteLine(hola.GetType());
+            Console.Writeline("hola {0}",hola)
         }
     }
 }
