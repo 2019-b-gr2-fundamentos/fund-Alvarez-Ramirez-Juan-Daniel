@@ -12,3 +12,12 @@ namespace c_
         }
     }
 }
+/* 
+1   Analisis cocioeconomico
+2   Algebra
+3   Compiladores
+5   Fundamentos de programacion
+7   Calculo
+11  Fisica
+13  Ingles
+*/
