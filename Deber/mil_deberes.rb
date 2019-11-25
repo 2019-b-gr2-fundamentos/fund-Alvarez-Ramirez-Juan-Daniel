@@ -10,15 +10,15 @@ deberesIngles = 0
 while numero < 1001
     if numero.remainder(13)  == 0
         deberesIngles = deberesIngles+1
-    elsif numero .remainder(11)  == 0
+    elsif numero.remainder(11)  == 0
         deberesFisica = deberesFisica+1
-    elsif numero .remainder(7)  == 0
+    elsif numero.remainder(7)  == 0
         deberesCalculo = deberesCalculo+1
-    elsif numero .remainder(5)  == 0
+    elsif numero.remainder(5)  == 0
         deberesFundamentos = deberesFundamentos+1
-    elsif numero .remainder(3)  == 0 {
+    elsif numero.remainder(3)  == 0 {
         deberesCompiladores = deberesCompiladores+1
-    elsif numero .remainder(2)  == 0
+    elsif numero.remainder(2)  == 0
         deberesAlgebra = deberesAlgebra+1
     else
         deberesAnalisis = deberesAnalisis+1
