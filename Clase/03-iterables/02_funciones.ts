@@ -1,61 +1,76 @@
-
-function sumar(numUno:number, numDos:number):number{
+function sumar(numUno:number, numDos:number): number{
     return numUno + numDos;
 }
-
-function restar(numUno:number, numDos:number):number{
+function restar(numUno:number, numDos:number): number{
     return numUno - numDos;
 }
-
-function multiplicar(numUno:number, numDos:number):number{
+function multiplicar(numUno:number, numDos:number): number{
     return numUno * numDos;
 }
-
-function dividir(numUno:number, numDos:number):number{
+function dividir(numUno:number, numDos:number): number{
     return numUno / numDos;
 }
 
-
-function calculadora(){
-    const operacion:string = prompt('Selecciona una opcion: Suma[1], Resta[2], multiplicacion[3], division[4], cerrar[5]');
-
-    const esSuma:boolean = operacion == "1"||
-                        operacion == "Suma"||
-                        operacion == "Suma[1]";
-    const esResta:boolean = operacion == "2"||
-                        operacion == "Resta"||
-                        operacion == "Resta[2]";
-    const esDivision:boolean = operacion == "3"||
-                        operacion == "multiplicacion"||
-                        operacion == "multiplicacion[3]";
-    const esMultiplicacion:boolean = operacion == "4"||
-                        operacion == "division"||
-                        operacion == "division[4]";
-    
-    if (esSuma||esMultiplicacion||esDivision||esResta){
-        const numeroUno:number = Number(prompt("ingrese el numero uno"))
-        const numeroDos:number = Number(prompt("ingrese el numero dos"))
-        
-        if(esSuma){
-                console.log(sumar(numeroDos,numeroUno));
-            }
-        if(esResta){
-                console.log(restar(numeroUno,numeroDos));
-            }
-        if(esMultiplicacion){
-                console.log(multiplicar(numeroUno,numeroDos));
-            }   
-        if(esDivision){
-                console.log(dividir(numeroUno,numeroDos));
-            }      
-    }else if(operacion == "5"){
-        console.log("adios");
-    }
-    else{calculadora();} 
-    return;
+function exponencial(numUno:number): number{
+    return Math.exp(numUno);
 }
+/*
+function dividir(x:number, y:number, pendiente:number ): string{
+    const constante:number = -(pendiente*x) + y
+    
+    return "";
+}
+function dividir(numUno:number, numDos:number): number{
+    return numUno / numDos;
+}
+function dividir(numUno:number, numDos:number): number{
+    return numUno / numDos;
+}
+function dividir(numUno:number, numDos:number): number{
+    return numUno / numDos;
+}
+function dividir(numUno:number, numDos:number): number{
+    return numUno / numDos;
+}
+*/
 
 function main(){
     calculadora();
+}
+function calculadora(){
+    const operacion:string = prompt('Selecciona una operacion: "suma-1", "resta-2", "multiplicacion-3", "divivison-4"');
+    const esSuma:boolean = operacion == 'suma' ||
+     operacion == '1' || 
+     operacion == 'suma-1';
+     const esResta:boolean = operacion == 'resta' ||
+     operacion == '2' || 
+     operacion == 'resta-2';
+     const esMultiplicacion:boolean = operacion == 'multiplicacion' ||
+     operacion == '3' || 
+     operacion == 'multiplicacion-3';
+     const esDivision:boolean = operacion == 'divivison' ||
+     operacion == '4' || 
+     operacion == 'divivison-1';
+ 
+    const estaValida:boolean = esSuma || esResta || esMultiplicacion || esDivision;
+ 
+    if(estaValida){
+        const numUno:number = +prompt("Numero 1");
+        const numDos:number = +prompt("Numero 2");
+        let resultado = 0;
+        if(esSuma){
+            resultado = sumar(numUno, numDos);
+        }
+        if(esResta){
+            resultado = restar(numUno, numDos);
+        }
+        if(esMultiplicacion){
+            resultado = multiplicar(numUno, numDos);
+        }
+        if(esDivision){
+            resultado = dividir(numUno, numDos);
+        }
+        console.log(resultado);
     }
-    
+}
+
