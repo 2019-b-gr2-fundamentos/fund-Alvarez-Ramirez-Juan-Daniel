@@ -1,110 +1,117 @@
-def sumar(numUno, numDos) 
-    resultado = numUno + numDos
+def sumar(num_uno, num_dos) 
+    resultado = num_uno.to_f + num_dos.to_f
     return resultado
 end
-def restar(numUno, numDos) 
-    resultado = numUno - numDos
+def restar(num_uno, num_dos) 
+    resultado = num_uno.to_f-num_dos.to_f
     return resultado
 end
-def multiplicar(numUno, numDos) 
-    resultado = numUno * numDos
+def multiplicar(num_uno, num_dos) 
+    resultado = num_uno.to_f * num_dos.to_f
     return resultado
 end
-def dividir(numUno, numDos)
-    resultado = numUno / numDos
+def dividir(num_uno, num_dos)
+    resultado = num_uno.to_f / num_dos.to_f
     return resultado
 end
 
 def exponencial(num)
-    resultado = Math::E^num
+    resultado = Math.exp(num.to_f)
     return resultado
 end
-def hipotenusa(numUno, numDos)
-    hipSq = numUno^2 + numDos^2
+def hipotenusa(num_uno, num_dos)
+    hipSq = num_uno.to_f**2 + num_dos.to_f**2
     resultado = Math.sqrt(hipSq)
     return resultado
 end
 def seno(num)
-    resultado = Math.sin(num)
+    resultado = Math.sin(num.to_f)
     return resultado
 end
 def coseno(num)
-    resultado = Math.cos(num)
+    resultado = Math.cos(num.to_f)
     return resultado
 end
 def tangente(num)
-    resultado = Math.tan(num)
+    resultado = Math.tan(num.to_f)
     return resultado
 end
-def arcCos(num)
-    resultado = Math.acos(num)
+def arc_cos(num)
+    resultado = Math.acos(num.to_f)
     return resultado
 end
 
 def calculadora
-    puts 'Selecciona una opcion: Suma[1], Resta[2], multiplicacion[3], division[4], exponencial[5], hipotenusa[6], seno[7], coseno[8], tangente[9], arccos[10], cerrar[11]'
-    operacion = gets
-    esSuma = operacion == "1" ||operacion == "Suma" || operacion == "Suma[1]"
-    esResta = operacion == "2" || operacion == "Resta" ||operacion == "Resta[2]"
-    esDivision = operacion == "3" ||operacion == "multiplicacion" ||operacion == "multiplicacion[3]"
-    esMultiplicacion = operacion == "4" ||operacion == "division" ||operacion == "division[4]"
+    puts 'Selecciona una opcion: Suma[1], Resta[2], multiplicacion[3], division[4], exponencial[5], hipotenusa[6], seno[7], coseno[8], tangente[9], arc_cos[10], cerrar[11]'
+    operacion = gets.chomp
 
-    esExponencial = operacion == "5" ||operacion == "exponencial" ||operacion == "exponencial[5]"
-    esHipotenusa = operacion == "6" ||operacion == "hipotenusa" ||operacion == "hipotenusa[6]"
-    esSeno = operacion == "7" ||operacion == "seno" ||operacion == "seno[7]"
-    esCoseno = operacion == "8" ||operacion == "coseno" ||operacion == "coseno[8]"
-    esTangente = operacion == "9" ||operacion == "tangente" ||operacion == "tangente[9]"
-    esArcCos = operacion == "10" ||operacion == "arctan" ||operacion == "arctan[10]"
+    es_suma = operacion == "1" or operacion == "Suma" or  operacion == "Suma[1]"
+    es_resta = operacion == "2" or  operacion == "Resta" or operacion == "Resta[2]"
+    es_division = operacion == "3" or operacion == "multiplicacion" or operacion == "multiplicacion[3]"
+    es_multiplicacion = operacion == "4" or operacion == "division" or operacion == "division[4]"
 
-    cerrar = operacion == "11" || operacion == "cerrar" || operacion == "cerrar[11]" ||  
-    if esSuma || esMultiplicacion || esDivision || esResta
+    es_exponencial = operacion == "5" or operacion == "exponencial" or operacion == "exponencial[5]"
+    es_hipotenusa = operacion == "6" or operacion == "hipotenusa" or operacion == "hipotenusa[6]"
+    es_seno = operacion == "7" or operacion == "seno" or operacion == "seno[7]"
+    es_coseno = operacion == "8" or operacion == "coseno" or operacion == "coseno[8]"
+    es_tangente = operacion == "9" or operacion == "tangente" or operacion == "tangente[9]"
+    es_arc_cos = operacion == "10" or operacion == "arctan" or operacion == "arctan[10]"
+
+    cerrar = operacion == "11" or  operacion == "cerrar" or  operacion == "cerrar[11]"
+
+    if es_suma or  es_multiplicacion or  es_division or  es_resta
         puts "ingrese el numero uno"
         numeroUno = gets
         puts "ingrese el numero dos"
         numeroDos = gets
 
-        if esSuma
+        if es_suma
             puts sumar(numeroDos, numeroUno)
         end
-        if esResta
+        if es_resta
             puts restar(numeroUno, numeroDos)
         end
-        if esMultiplicacion
+        if es_multiplicacion
             puts multiplicar(numeroUno, numeroDos)
         end
-        if esDivision
+        if es_division
             puts dividir(numeroUno, numeroDos)
         end
-        if esHipotenusa
+        if es_hipotenusa
             puts hipotenusa(numeroUno, numeroDos)
         end
         calculadora
     end
-    if esExponencial || esSeno || esCoseno || esTangente || esArcCos
+    if es_exponencial or  es_seno or  es_coseno or  es_tangente or  es_arc_cos
         puts "escribir el numero:"
         num = gets
-        if esExponencial
+        if es_exponencial
             puts exponencial(num)
         end
-        if esSeno
+        if es_seno
             puts seno(num)
         end
-        if esCoseno
+        if es_coseno
             puts coseno(num)
         end
-        if esTangente
+        if es_tangente
             puts tangente(num)
         end
-        if esArcCos
-            puts arcCos(num)
+        if es_arc_cos
+            puts arc_cos(num)
         end
+        return 1
         calculadora
     end
     if (cerrar)
-        puts "adios"
-        break
+        return 0
     end
+    puts operacion
     calculadora
+    return 1
 end
 
-calculadora
+if calculadora == 1 
+    calculadora
+end
+puts "adios"
