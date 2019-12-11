@@ -1,3 +1,4 @@
+
 def imprimir(array)
     for i in 0..array.length-1 do
         puts "dato: #{array[i]} ,posicion: #{i}"
@@ -35,6 +36,7 @@ def eliminar(array)
     imprimir(array)
     return array
 end
+$arreglo = []
 def main()
     puts "escoja una opcion crear[1], eliminar elemento[2], actualizar[3] o imprimir arreglo[4]"
     opcion = gets.chomp
@@ -43,16 +45,16 @@ def main()
     es_actualizar = opcion == "3" || opcion == "actualizar[3]" || opcion == "actualizar"
     es_imprimir = opcion == "4" || opcion == "imprimir arreglo[4]" || opcion == "imprimir arreglo"
     if es_crear
-      arreglo = crear(arreglo)
+      $arreglo = crear($arreglo)
     end
     if es_eliminar
-      arreglo = eliminar(arreglo)
+      $arreglo = eliminar($arreglo)
     end
     if es_actualizar
-      arreglo = actualizar(arreglo)
+      $arreglo = actualizar($arreglo)
     end
     if es_imprimir
-      imprimir(arreglo)
+      imprimir($arreglo)
     end
     main
 end
