@@ -64,6 +64,20 @@ function dimensionM (mat:Array<Array<number>>):number{
     }
     return 0;
 } 
+function intercalar(mat:Array<Array<number>>):Array<Array<number>>{
+    let tempArray:Array<Array<number>> = [[]];
+    for (let j = 0; j < mat.length; j++) {
+        let sumaTemp = 0
+        for (let i = 0; i < mat[j].length; i++) {
+            tempArray[j][i] = mat[j][i]
+            if(i==j){
+                tempArray[j][i] = mat[j][mat[j].length-i]
+                tempArray[j][mat[j].length-i] = mat[j][i]
+            }
+        }
+    }
+    return tempArray;
+}
 
 function main(){
     let matOne = [[1,4,3],[1,3,4]];
@@ -74,5 +88,6 @@ function main(){
     console.log("los arreglos no son iguales")
     console.log("la suma de columnas es: "+ sumaColumna(matTwo));
     console.log("la suma de filas es: " + sumaFila(matTwo));
+    console.log(intercalar(matOne));
 }
 main()
