@@ -64,23 +64,27 @@ function dimensionM (mat:Array<Array<number>>):number{
     }
     return 0;
 } 
-function intercalar(mat:Array<Array<number>>):Array<Array<number>>{
-    let tempArray:Array<Array<number>> = [[]];
+function intercalar(mat:number[][]):number[][]{
+    let tempArray:number[][] = [];
     for (let j = 0; j < mat.length; j++) {
-        let sumaTemp = 0
+        tempArray.push([]);
         for (let i = 0; i < mat[j].length; i++) {
             tempArray[j][i] = mat[j][i]
-            if(i==j){
-                tempArray[j][i] = mat[j][mat[j].length-i]
-                tempArray[j][mat[j].length-i] = mat[j][i]
+
+            if(i==j || j == mat[j].length-i-1) {
+                tempArray[j][i] = mat[j][mat[j].length-i-1];
+                tempArray[j][mat[j].length-i-1] = mat[j][i];
+                
             }
+            console.log(tempArray);
+            
         }
     }
     return tempArray;
 }
 
 function main(){
-    let matOne = [[1,4,3],[1,3,4]];
+    let matOne = [[1,4,3],[1,3,4],[1,2,3]];
     let matTwo = [[1,2,3],[1,3,4]];
     if(equals(matOne,matTwo)){
         console.log("Los arreglos son iguales")

@@ -64,14 +64,30 @@ function dimensionM(mat) {
     }
     return 0;
 }
+function intercalar(mat) {
+    var tempArray = [];
+    for (var j = 0; j < mat.length; j++) {
+        tempArray.push([]);
+        for (var i = 0; i < mat[j].length; i++) {
+            tempArray[j][i] = mat[j][i];
+            if (i == j || j == mat[j].length - i - 1) {
+                tempArray[j][i] = mat[j][mat[j].length - i - 1];
+                tempArray[j][mat[j].length - i - 1] = mat[j][i];
+            }
+            console.log(tempArray);
+        }
+    }
+    return tempArray;
+}
 function main() {
-    var matOne = [[1, 4, 3], [1, 3, 4]];
+    var matOne = [[1, 4, 3], [1, 3, 4], [1, 2, 3]];
     var matTwo = [[1, 2, 3], [1, 3, 4]];
     if (equals(matOne, matTwo)) {
         console.log("Los arreglos son iguales");
     }
     console.log("los arreglos no son iguales");
-    console.log(sumaColumna(matTwo));
-    console.log(sumaFila(matTwo));
+    console.log("la suma de columnas es: " + sumaColumna(matTwo));
+    console.log("la suma de filas es: " + sumaFila(matTwo));
+    console.log(intercalar(matOne));
 }
 main();
