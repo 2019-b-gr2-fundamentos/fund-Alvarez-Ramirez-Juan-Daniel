@@ -12,11 +12,11 @@ function arregloIgualAArreglo (matOne:Array<Array<number>>,matTwo:Array<Array<nu
     return comparison;
 } 
 function dimensionesIgualesDeDosArreglos(matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolean{
-    let dimension = dimensionM(matOne) == dimensionM(matTwo) && dimensionN(matOne) == dimensionN(matTwo);
-    return dimension
+    let laDimensionEsEquivalente = dimensionM(matOne) == dimensionM(matTwo) && dimensionN(matOne) == dimensionN(matTwo);
+    return laDimensionEsEquivalente;
 }
 function sumaFila(mat:Array<Array<number>>):Array<number>{
-    if(dimensionM(mat) != 0 && dimensionN(mat) != 0){
+    if(longitudDeArregloConsistente(mat)){
     let sumaFinal = [];
     for (let j = 0; j < mat.length; j++) {
         let sumaTemp = 0
@@ -27,10 +27,9 @@ function sumaFila(mat:Array<Array<number>>):Array<number>{
     }
     return sumaFinal;
     }
-    return [0];
 }
 function sumaColumna(mat:Array<Array<number>>):Array<number>{
-    if(dimensionM(mat) != 0 && dimensionN(mat) != 0){
+    if(longitudDeArregloConsistente(mat)){
     let sumaFinal = [];
     for (let j = 0; j < mat[0].length; j++) {
         let sumaTemp = 0
@@ -57,19 +56,19 @@ function dimensionM (mat:Array<Array<number>>):number{
 } 
 function longitudDeArregloConsistente (mat:number[][]):boolean{
     for(let j=0; j<mat.length; j++){
-         if(mat[0].length == mat[j].length){
-             return false
+         if(mat[0].length != mat[j].length){
+             return false;
          }
     }
     return true
 }
 function esArregloCuadrado (mat:number[][]):boolean{
    if(longitudDeArregloConsistente(mat)){
-       if(mat.length == mat[0].length){
-           return true;
+       if(mat.length != mat[0].length){
+           return false;
        }
    }
-   return false;
+   return true;
 }
 function intercalar(mat:number[][]):number[][]{
     if(esArregloCuadrado(mat)){
@@ -85,7 +84,6 @@ function intercalar(mat:number[][]):number[][]{
                 tempArray[j][mat[j].length-i-1] = mat[j][i];
                 
             }
-            console.log(tempArray);
             }
             
         }
