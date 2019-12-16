@@ -28,7 +28,6 @@ function sumaFila(mat:Array<Array<number>>):Array<number>{
     }
     return [0];
 }
-
 function sumaColumna(mat:Array<Array<number>>):Array<number>{
     if(dimensionM(mat) != 0 && dimensionN(mat) != 0){
     let sumaFinal = [];
