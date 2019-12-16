@@ -1,5 +1,6 @@
-function equals (matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolean{
-    if(!dimensionesIguales(matOne,matTwo)){
+function arregloIgualAArreglo (matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolean{
+    if(!dimensionesIgualesDeDosArreglos
+    (matOne,matTwo)){
         return false;
     }
     let comparison = true;
@@ -10,7 +11,7 @@ function equals (matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolea
     }
     return comparison;
 } 
-function dimensionesIguales(matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolean{
+function dimensionesIgualesDeDosArreglos(matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolean{
     let dimension = dimensionM(matOne) == dimensionM(matTwo) && dimensionN(matOne) == dimensionN(matTwo);
     return dimension
 }
@@ -43,24 +44,14 @@ function sumaColumna(mat:Array<Array<number>>):Array<number>{
     return [0];
 }
 function dimensionN (mat:Array<Array<number>>):number{
-    let longitud = mat.length
-    let longitudConsistente = true
-    for(let i= 0; i< mat[0].length; i++ ){
-        longitudConsistente = mat.length == longitud
-    }
-    if(longitudConsistente){
-        return longitud;
+    if(longitudDeArregloConsistente(mat)){
+        return mat.length;
     }
     return 0;
 } 
 function dimensionM (mat:Array<Array<number>>):number{
-    let longitud = mat[0].length
-    let longitudConsistente = true
-    for(let i= 0; i< mat.length; i++ ){
-        longitudConsistente = mat[i].length == longitud
-    }
-    if(longitudConsistente){
-        return longitud;
+    if(longitudDeArregloConsistente(mat)){
+        return mat[0].length;
     }
     return 0;
 } 
@@ -107,7 +98,8 @@ function intercalar(mat:number[][]):number[][]{
 function main(){
     let matOne = [[1,4,3],[1,3,4],[1,2,3]];
     let matTwo = [[1,2,3],[1,3,4]];
-    if(equals(matOne,matTwo)){
+    if(arregloIgualAArreglo
+    (matOne,matTwo)){
         console.log("Los arreglos son iguales")
     }
     console.log("los arreglos no son iguales")
