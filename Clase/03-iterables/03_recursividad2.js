@@ -64,20 +64,41 @@ function dimensionM(mat) {
     }
     return 0;
 }
-function intercalar(mat) {
-    var tempArray = [];
+function longitudDeArregloConsistente(mat) {
+    var longitudArregloDeArreglo = mat[0].length;
+    var longitudConsistente = true;
     for (var j = 0; j < mat.length; j++) {
-        tempArray.push([]);
-        for (var i = 0; i < mat[j].length; i++) {
-            tempArray[j][i] = mat[j][i];
-            if (i == j || j == mat[j].length - i - 1) {
-                tempArray[j][i] = mat[j][mat[j].length - i - 1];
-                tempArray[j][mat[j].length - i - 1] = mat[j][i];
-            }
-            console.log(tempArray);
+        longitudConsistente = longitudArregloDeArreglo == longitudArregloDeArreglo || longitudConsistente;
+    }
+    return longitudConsistente;
+}
+function esArregloCuadrado(mat) {
+    if (longitudDeArregloConsistente(mat)) {
+        if (mat.length == mat[0].length) {
+            return true;
         }
     }
-    return tempArray;
+    return false;
+}
+function intercalar(mat) {
+    if (esArregloCuadrado(mat)) {
+        var tempArray = [];
+        for (var j = 0; j < mat.length; j++) {
+            tempArray.push([]);
+            for (var i = 0; i < mat[j].length; i++) {
+                if (tempArray[j][i] == null) {
+                    tempArray[j][i] = mat[j][i];
+                    if (i == j || j == mat[j].length - i - 1) {
+                        tempArray[j][i] = mat[j][mat[j].length - i - 1];
+                        tempArray[j][mat[j].length - i - 1] = mat[j][i];
+                    }
+                    console.log(tempArray);
+                }
+            }
+        }
+        return tempArray;
+    }
+    return [[0]];
 }
 function main() {
     var matOne = [[1, 4, 3], [1, 3, 4], [1, 2, 3]];

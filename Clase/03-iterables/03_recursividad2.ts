@@ -28,6 +28,7 @@ function sumaFila(mat:Array<Array<number>>):Array<number>{
     }
     return [0];
 }
+
 function sumaColumna(mat:Array<Array<number>>):Array<number>{
     if(dimensionM(mat) != 0 && dimensionN(mat) != 0){
     let sumaFinal = [];
@@ -64,11 +65,29 @@ function dimensionM (mat:Array<Array<number>>):number{
     }
     return 0;
 } 
+function longitudDeArregloConsistente (mat:number[][]):boolean{
+    for(let j=0; j<mat.length; j++){
+         if(mat[0].length == mat[j].length){
+             return false
+         }
+    }
+    return true
+}
+function esArregloCuadrado (mat:number[][]):boolean{
+   if(longitudDeArregloConsistente(mat)){
+       if(mat.length == mat[0].length){
+           return true;
+       }
+   }
+   return false;
+}
 function intercalar(mat:number[][]):number[][]{
+    if(esArregloCuadrado(mat)){
     let tempArray:number[][] = [];
     for (let j = 0; j < mat.length; j++) {
         tempArray.push([]);
         for (let i = 0; i < mat[j].length; i++) {
+            if(tempArray[j][i]==null){
             tempArray[j][i] = mat[j][i]
 
             if(i==j || j == mat[j].length-i-1) {
@@ -77,10 +96,13 @@ function intercalar(mat:number[][]):number[][]{
                 
             }
             console.log(tempArray);
+            }
             
         }
     }
     return tempArray;
+    }
+    return [[0]];
 }
 
 function main(){
