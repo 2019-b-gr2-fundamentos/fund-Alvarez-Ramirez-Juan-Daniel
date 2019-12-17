@@ -1,2 +1,0 @@
-puts "hola mundo"
-gets
