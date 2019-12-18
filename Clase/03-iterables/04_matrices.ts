@@ -1,4 +1,4 @@
-function arregloIgualAArreglo (matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolean{
+function arregloIgualAArreglo (matOne:number[][],matTwo:number[][]):boolean{
     if(!dimensionesIgualesDeDosArreglos
     (matOne,matTwo)){
         return false;
@@ -11,11 +11,11 @@ function arregloIgualAArreglo (matOne:Array<Array<number>>,matTwo:Array<Array<nu
     }
     return comparison;
 } 
-function dimensionesIgualesDeDosArreglos(matOne:Array<Array<number>>,matTwo:Array<Array<number>>):boolean{
+function dimensionesIgualesDeDosArreglos(matOne:number[][],matTwo:number[][]):boolean{
     let laDimensionEsEquivalente = dimensionM(matOne) == dimensionM(matTwo) && dimensionN(matOne) == dimensionN(matTwo);
     return laDimensionEsEquivalente;
 }
-function sumaFila(mat:Array<Array<number>>):Array<number>{
+function sumaFila(mat:number[][]):Array<number>{
     if(longitudDeArregloConsistente(mat)){
     let sumaFinal = [];
     for (let j = 0; j < mat.length; j++) {
@@ -27,8 +27,9 @@ function sumaFila(mat:Array<Array<number>>):Array<number>{
     }
     return sumaFinal;
     }
+    return;
 }
-function sumaColumna(mat:Array<Array<number>>):Array<number>{
+function sumaColumna(mat:number[][]):Array<number>{
     if(longitudDeArregloConsistente(mat)){
     let sumaFinal = [];
     for (let j = 0; j < mat[0].length; j++) {
@@ -40,15 +41,15 @@ function sumaColumna(mat:Array<Array<number>>):Array<number>{
     }
     return sumaFinal;
     }
-    return [0];
+    return;
 }
-function dimensionN (mat:Array<Array<number>>):number{
+function dimensionN (mat:number[][]):number{
     if(longitudDeArregloConsistente(mat)){
         return mat.length;
     }
     return 0;
 } 
-function dimensionM (mat:Array<Array<number>>):number{
+function dimensionM (mat:number[][]):number{
     if(longitudDeArregloConsistente(mat)){
         return mat[0].length;
     }
@@ -57,6 +58,7 @@ function dimensionM (mat:Array<Array<number>>):number{
 function longitudDeArregloConsistente (mat:number[][]):boolean{
     for(let j=0; j<mat.length; j++){
          if(mat[0].length != mat[j].length){
+            console.log("longitud inconsistente en la matriz: ",mat)
              return false;
          }
     }
@@ -64,11 +66,11 @@ function longitudDeArregloConsistente (mat:number[][]):boolean{
 }
 function esArregloCuadrado (mat:number[][]):boolean{
    if(longitudDeArregloConsistente(mat)){
-       if(mat.length != mat[0].length){
-           return false;
+       if(mat.length == mat[0].length){
+           return true;
        }
    }
-   return true;
+   return false;
 }
 function intercalar(mat:number[][]):number[][]{
     if(esArregloCuadrado(mat)){
@@ -90,11 +92,11 @@ function intercalar(mat:number[][]):number[][]{
     }
     return tempArray;
     }
-    return [[0]];
+    return;
 }
 
 function main(){
-    let matOne = [[1,4,3],[1,3,4],[1,2,3]];
+    let matOne = [[1,4],[1,3,4],[1,2,3]];
     let matTwo = [[1,2,3],[1,3,4]];
     if(arregloIgualAArreglo
     (matOne,matTwo)){

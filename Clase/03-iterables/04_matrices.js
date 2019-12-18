@@ -26,6 +26,7 @@ function sumaFila(mat) {
         }
         return sumaFinal;
     }
+    return;
 }
 function sumaColumna(mat) {
     if (longitudDeArregloConsistente(mat)) {
@@ -39,7 +40,7 @@ function sumaColumna(mat) {
         }
         return sumaFinal;
     }
-    return [0];
+    return;
 }
 function dimensionN(mat) {
     if (longitudDeArregloConsistente(mat)) {
@@ -56,6 +57,7 @@ function dimensionM(mat) {
 function longitudDeArregloConsistente(mat) {
     for (var j = 0; j < mat.length; j++) {
         if (mat[0].length != mat[j].length) {
+            console.log("longitud inconsistente en la matriz: ", mat);
             return false;
         }
     }
@@ -63,11 +65,11 @@ function longitudDeArregloConsistente(mat) {
 }
 function esArregloCuadrado(mat) {
     if (longitudDeArregloConsistente(mat)) {
-        if (mat.length != mat[0].length) {
-            return false;
+        if (mat.length == mat[0].length) {
+            return true;
         }
     }
-    return true;
+    return false;
 }
 function intercalar(mat) {
     if (esArregloCuadrado(mat)) {
@@ -86,7 +88,7 @@ function intercalar(mat) {
         }
         return tempArray;
     }
-    return [[0]];
+    return;
 }
 function main() {
     var matOne = [[1, 4, 3], [1, 3, 4], [1, 2, 3]];
