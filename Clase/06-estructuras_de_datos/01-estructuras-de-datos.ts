@@ -23,3 +23,4 @@ const poliPerroDos:AnimalPerrito = {
     perritas: [],
     vacunado: false,
 }
+
