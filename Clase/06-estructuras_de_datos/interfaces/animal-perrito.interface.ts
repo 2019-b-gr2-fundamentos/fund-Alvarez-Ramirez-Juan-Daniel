@@ -1,3 +1,4 @@
+import { Duenio } from "./duenio.interface";
 export interface AnimalPerrito {
     nombreCientifico:string;
     nombre:string;
@@ -6,4 +7,5 @@ export interface AnimalPerrito {
     hijos?:number;
     perritas?:Array<string>;
     vacunado?:boolean;
+    duenio: Duenio;
 }
