@@ -2,13 +2,10 @@
   "name": "06-estructuras_de_datos",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "02-crud.js",
   "scripts": {
-    "start": "(tsc 02-crud.ts || echo) && node 02-crud.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "prompts": "^2.3.0"
-  }
+  "license": "ISC"
 }

@@ -4,5 +4,5 @@ export interface Duenio {
     apellidos:string;
     cedula?:string;
     fechaNacimiento:number;
-    peritos: [AnimalPerrito];
+    peritos?: [AnimalPerrito];
 }

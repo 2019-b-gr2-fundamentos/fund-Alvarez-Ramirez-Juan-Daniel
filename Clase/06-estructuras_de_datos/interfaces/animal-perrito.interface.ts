@@ -7,5 +7,5 @@ export interface AnimalPerrito {
     hijos?:number;
     perritas?:Array<string>;
     vacunado?:boolean;
-    duenio: Duenio;
+    duenio?: Duenio;
 }
