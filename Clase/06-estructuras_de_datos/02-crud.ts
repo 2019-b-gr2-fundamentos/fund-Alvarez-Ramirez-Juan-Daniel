@@ -5,7 +5,7 @@ function main(){
 }
 
 
-function obtenerDatosDeAnimalPerritoSincrona(){
+async function obtenerDatosDeAnimalPerritoSincrona(){
     console.log("Inicio");
     const preguntas =[
         {
@@ -23,8 +23,9 @@ function obtenerDatosDeAnimalPerritoSincrona(){
             name: 'cedula',
             message: 'Puedes darme tu cedula?'
         },
-    ]
+    ];
     const respuestaEdad = await prompts(preguntas);
-    console.log('Respuesta',respuestaEdad)
+    console.log('Respuesta',respuestaEdad);
     console.log('Fin');
 }
+main();
