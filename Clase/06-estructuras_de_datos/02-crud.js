@@ -1,56 +1,29 @@
-var prompts = require('prompts');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var prompts = require("prompts");
 function main() {
-    obtenerDatosDeAnimalPerrito();
     obtenerDatosDeAnimalPerritoSincrona();
 }
-function obtenerDatosDeAnimalPerrito() {
-    console.log("Start");
-    var promesaEdad = prompts({
-        type: 'number',
-        name: 'edad',
-        message: 'puedes darme tu edad?'
-    })
-        .then(function (datos) {
-        console.log('datos', datos);
-        var promesaNombre = prompts({
-            type: 'text',
-            name: 'nombre',
-            message: 'puedes darme tu nombre?'
-        })
-            .then(function (datos) {
-            console.log('datos', datos);
-        })
-            .catch(function (error) {
-            console.log('error', error);
-        });
-    })
-        .catch(function (error) {
-        console.log('error', error);
-    });
-}
 function obtenerDatosDeAnimalPerritoSincrona() {
-    console.log("Start");
-    var promesaEdad = prompts({
-        type: 'number',
-        name: 'edad',
-        message: 'puedes darme tu edad?'
-    })
-        .then(function (datos) {
-        console.log('datos', datos);
-        var promesaNombre = prompts({
-            type: 'text',
+    console.log("Inicio");
+    var preguntas = [
+        {
+            type: 'number',
+            name: 'edad',
+            message: 'Puedes darme tu edad?'
+        },
+        {
+            type: 'string',
             name: 'nombre',
-            message: 'puedes darme tu nombre?'
-        })
-            .then(function (datos) {
-            console.log('datos', datos);
-        })
-            .catch(function (error) {
-            console.log('error', error);
-        });
-    })
-        .catch(function (error) {
-        console.log('error', error);
-    });
-    console.log("End");
+            message: 'Puedes darme tu nombre?'
+        },
+        {
+            type: 'string',
+            name: 'cedula',
+            message: 'Puedes darme tu cedula?'
+        },
+    ];
+    var respuestaEdad = yield prompts(preguntas);
+    console.log('Respuesta', respuestaEdad);
+    console.log('Fin');
 }
