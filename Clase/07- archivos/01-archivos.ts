@@ -1,5 +1,6 @@
-import {leerArchivo} from "./02-archivosLeer"
-import {escribirArchivo} from "./03-escribirarchivo"
+import {leerArchivo} from "./02-archivosLeer";
+import {escribirArchivo} from "./03-escribirarchivo";
+
 function main(){
     let path = './ejemplo.txt' 
     const textoLeido = leerArchivo(path);
@@ -7,4 +8,5 @@ function main(){
     escribirArchivo(path,'');
     console.log(textoLeido+ nuevoContendido);
 }
+
 main();
