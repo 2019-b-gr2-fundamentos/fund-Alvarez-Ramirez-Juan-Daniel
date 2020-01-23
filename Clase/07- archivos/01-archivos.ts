@@ -1,12 +1,20 @@
 import {leerArchivo} from "./02-archivosLeer";
 import {escribirArchivo} from "./03-escribirarchivo";
+import {Estudiante} from './interfaces/estudiante.interface'
+import * as prompts from 'prompts'
 
-function main(){
-    let path = './ejemplo.txt' 
-    const textoLeido = leerArchivo(path);
-    const nuevoContendido = "tengo hambre \n";
-    escribirArchivo(path,'');
-    console.log(textoLeido+ nuevoContendido);
+async function main(){
+    let contador = 1;
+    const arregloEstudiante:Estudiante[] = [];
+    const arregloPreguntas = [ 
+        {
+            type: 'text',
+            name: 'nombre',
+            message: 'Ingresa tu nombre'
+        }        
+    ]
+    const respuestaEstudiante = await prompts(arregloPreguntas);
+    console.log(respuestaEstudiante);
 }
 
 main();

@@ -14,12 +14,12 @@ async function obtenerDatosDeAnimalPerritoSincrona(){
             message: 'Puedes darme tu edad?'
         },
         {
-            type:'string',
+            type:'text',
             name: 'nombre',
             message: 'Puedes darme tu nombre?'
         },
         {
-            type:'string',
+            type:'text',
             name: 'cedula',
             message: 'Puedes darme tu cedula?'
         },

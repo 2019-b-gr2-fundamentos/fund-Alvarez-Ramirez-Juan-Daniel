@@ -16,7 +16,7 @@ const palitos = [
 ];
 function juego() {
     return __awaiter(this, void 0, void 0, function* () {
-        const mensaje = yield prompts().then().catch();
+        const mensaje = yield prompts();
         console.log(mensaje);
     });
 }

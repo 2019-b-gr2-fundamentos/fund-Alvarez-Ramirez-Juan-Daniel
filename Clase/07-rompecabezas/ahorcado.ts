@@ -6,10 +6,17 @@ const palitos:string[] = [
     "",
     "",
 ]
+
 async function juego(){
-    const mensaje = await prompts().then().catch();
+    const mensajeTipo =         {
+        type:'number',
+        name: 'edad',
+        message: 'Puedes darme tu edad?'
+    }
+    const mensaje = await prompts();
     console.log(mensaje);
 }
+
 function main(){
     juego().then().catch();
     
