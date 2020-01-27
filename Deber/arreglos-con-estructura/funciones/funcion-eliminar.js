@@ -36,66 +36,28 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var funcion_imprimir_1 = require("./funcion-imprimir");
 var prompts = require("prompts");
-var funcion_imprimir_1 = require("./funciones/funcion-imprimir");
-var funcion_crear_1 = require("./funciones/funcion-crear");
-var funcion_eliminar_1 = require("./funciones/funcion-eliminar");
-var funcion_actualizar_1 = require("./funciones/funcion-actualizar");
-function escoger(array) {
+function eliminar(array) {
     return __awaiter(this, void 0, void 0, function () {
-        var escogerOpcion, opcion, es_crear, es_eliminar, es_actualizar, es_imprimir;
+        var posicionEntrada, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, prompts({
-                        type: 'text',
-                        name: 'opcionEscogida',
-                        message: 'escoja una opcion crear[1], eliminar elemento[2] o actualizar[3]'
+                        type: 'number',
+                        name: 'posicion',
+                        message: 'ingrese la posicion a eliminar'
                     })];
                 case 1:
-                    escogerOpcion = _a.sent();
-                    opcion = escogerOpcion.opcionEscogida;
-                    es_crear = opcion == "1" || opcion == "crear[1]" || opcion == "crear";
-                    es_eliminar = opcion == "2" || opcion == "eliminar elemento[2]" || opcion == "eliminar elemento";
-                    es_actualizar = opcion == "3" || opcion == "actualizar[3]" || opcion == "actualizar";
-                    es_imprimir = opcion == "4" || opcion == "imprimir arreglo[4]" || opcion == "imprimir arreglo";
-                    if (!es_crear) return [3 /*break*/, 3];
-                    return [4 /*yield*/, funcion_crear_1.crear(array)];
-                case 2:
-                    array = _a.sent();
-                    _a.label = 3;
-                case 3:
-                    if (!es_eliminar) return [3 /*break*/, 5];
-                    return [4 /*yield*/, funcion_eliminar_1.eliminar(array)];
-                case 4:
-                    array = _a.sent();
-                    _a.label = 5;
-                case 5:
-                    if (!es_actualizar) return [3 /*break*/, 7];
-                    return [4 /*yield*/, funcion_actualizar_1.actualizar(array)];
-                case 6:
-                    array = _a.sent();
-                    _a.label = 7;
-                case 7:
-                    if (es_imprimir) {
-                        funcion_imprimir_1.imprimir(array);
+                    posicionEntrada = _a.sent();
+                    for (i = posicionEntrada.posicion; i < array.length - 1; i++) {
+                        array[i] = array[i + 1];
                     }
-                    if (opcion == "salir") {
-                        return [2 /*return*/];
-                    }
-                    escoger(array);
-                    return [2 /*return*/];
+                    array.pop();
+                    funcion_imprimir_1.imprimir(array);
+                    return [2 /*return*/, array];
             }
         });
     });
 }
-function main() {
-    return __awaiter(this, void 0, void 0, function () {
-        var array;
-        return __generator(this, function (_a) {
-            array = [];
-            escoger(array);
-            return [2 /*return*/];
-        });
-    });
-}
-main();
+exports.eliminar = eliminar;

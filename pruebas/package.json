@@ -1,0 +1,16 @@
+{
+  "name": "pruebas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "(tsc transformation.ts || echo ) && node transformation.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "files": "^1.0.0",
+    "fs": "0.0.1-security",
+    "fs-extra": "^8.1.0"
+  }
+}

@@ -3,7 +3,8 @@ import { escribirArchivo } from "./03-escribir-archivo";
 import { Estudiante } from "./interfaces/estudiante.interface";
 import * as prompts from 'prompts';
 async function main(){
-
+    const arregloCargadoDeArchivo = JSON.parse("\n \n [] ");
+/*
     let contador = 1;
     const contenidoArchivo = leerArchivo(
         './ejemplo.txt'
@@ -74,7 +75,7 @@ async function main(){
             );
     console.log(estudianteEncontrado);
 
-
+    */
 
 
 

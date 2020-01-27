@@ -1,64 +1,15 @@
-import {prompts} from 'prompts'
+import * as prompts from 'prompts'
+import {imprimir} from './funciones/funcion-imprimir'
+import {crear} from './funciones/funcion-crear'
+import {eliminar} from './funciones/funcion-eliminar'
+import {actualizar} from './funciones/funcion-actualizar'
 
-function imprimir(array){
-    for (let i = 0; 1 < array.length-1; i++) {
-        console.log(`dato: ${array[1]}, posicion: ${i}`)
-    };
-}
-async function actualizar(array){
-    const formatoDeDato = [
-        {
-            type:'number',
-            name: 'dato',
-            message: 'ingrese un dato?'
-        },
-        {
-            type:'number',
-            name: 'posicion',
-            message: 'ingrese la posicion'
-        }
-    ];
-    const inputDatoPosicion = await prompts(formatoDeDato);
-    array[inputDatoPosicion.posicion] = inputDatoPosicion.dato;
-    console.log("arreglo actualizado");
-    imprimir(array);
-    return array;
-}
-async function crear(array){
-    const longitud = await prompts({
-        type: 'number',
-        name: 'longitud',
-        message: 'ingrese el tamaño del arreglo'
-    })
-    for (let i = 0; i < longitud.longitud-1; i++) {
-        const datoDeEntrada = await prompts({
-            type:'text',
-            name:'dato',
-            message:'Ingrese un valor a agregar'
-        });
-        array[i] = datoDeEntrada.dato;
-    }
-    imprimir(array);
-    return array;
-}
-async function eliminar(array){
-    const posicionEntrada = await prompts({
-        type: 'number',
-        name: 'posicion',
-        message: 'ingrese la posicion a eliminar'
-    });
-    for (let i = 0; posicionEntrada.posicion < array.length-1; i++) {
-        array[i]= array[i+1];
-    }
-    array.pop();
-    imprimir(array);
-    return array;
-}
+
 async function escoger(array:Array<Number>){
     const escogerOpcion = await prompts({
         type: 'text',
         name: 'opcionEscogida',
-        message: 'ingrese la posicion a eliminar'
+        message: 'escoja una opcion crear[1], eliminar elemento[2] o actualizar[3]'
     });
     const opcion = escogerOpcion.opcionEscogida;
     const es_crear = opcion == "1" || opcion == "crear[1]" || opcion == "crear"
@@ -76,6 +27,9 @@ async function escoger(array:Array<Number>){
     }
      if( es_imprimir){
         imprimir(array);
+    }
+    if( opcion == "salir"){
+        return;
     }
     escoger(array);
 }
