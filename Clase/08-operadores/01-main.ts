@@ -65,6 +65,15 @@ function main(){
     )
     console.log(respuestaSome);
 */
+    const respuestaReduce = arregloDeEstudiantes
+    .reduce(
+        function(acumulador,valorActual,i,a){
+            const calculo = valorActual.nota + acumulador;
+            return calculo
+        },0
+    );
+    console.log(respuestaReduce);
+
 
 }
 main();
