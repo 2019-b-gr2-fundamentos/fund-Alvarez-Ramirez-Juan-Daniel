@@ -1,0 +1,15 @@
+{
+  "name": "arreglos-con-estructura",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "prompts": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "(tsc arreglos-de-vectores.ts --target ES5 || echo ) && node arreglos-de-vectores.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

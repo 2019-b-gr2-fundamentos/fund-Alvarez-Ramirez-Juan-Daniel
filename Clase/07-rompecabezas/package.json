@@ -1,0 +1,14 @@
+{
+  "name": "07-rompecabezas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rompecabezas.js",
+  "scripts": {
+    "start": "(tsc ahorcado.ts --target ES2015 || echo ) && node ahorcado.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompts": "^2.3.0"
+  }
+}

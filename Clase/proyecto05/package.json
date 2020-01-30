@@ -1,0 +1,15 @@
+{
+  "name": "proyecto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "hola-danielalvarez": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "empezar": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
