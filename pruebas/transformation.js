@@ -38,20 +38,59 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var fs = require("./node_modules/fs-extra");
 var prompts = require("prompts");
-function iniciarJuego(numeroDeIntentosInicial) {
-    for (var numeroDeIntentos = 0; numeroDeIntentos < numeroDeIntentosInicial; numeroDeIntentos++) {
-        var numberImage = Math.floor((numeroDeIntentos / numeroDeIntentosInicial) * 6 + 1);
-        var imagenAhorcado = fs.readFileSync('./ahorcado_imagenes/' + numberImage + '.txt', 'utf8');
-        console.log(imagenAhorcado);
-    }
-}
-function adivinaLetra(stringEntrada) {
+function juego(arrayDeArraysPalabra, indiceDeArrayPalabra, arrayAdivinacion, numeroDeIntentosActual, numeroDeIntentosTotal) {
     return __awaiter(this, void 0, void 0, function () {
-        var arrayDePalabra, letraAdivinadaEntrada, letraAdivinada, arrayDeAdivinacion;
+        var yaNoQuedanTurnos, nuevoArrayDeAdivinacion, numberImage, imagenAhorcado, palabraTerminada, adivinacionCorrecta;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    arrayDePalabra = stringEntrada.split("");
+                    yaNoQuedanTurnos = numeroDeIntentosActual == 0;
+                    if (yaNoQuedanTurnos) {
+                        console.log("perdiste despues de completar " + indiceDeArrayPalabra + " palabras");
+                        return [2 /*return*/];
+                    }
+                    return [4 /*yield*/, adivinaLetra(arrayDeArraysPalabra[indiceDeArrayPalabra], arrayAdivinacion)];
+                case 1:
+                    nuevoArrayDeAdivinacion = _a.sent();
+                    numberImage = Math.floor(((numeroDeIntentosTotal - numeroDeIntentosActual) / numeroDeIntentosTotal) * 6 + 1);
+                    imagenAhorcado = fs.readFileSync('./ahorcado_imagenes/' + numberImage + '.txt', 'utf8');
+                    console.log(imagenAhorcado);
+                    console.log(nuevoArrayDeAdivinacion);
+                    palabraTerminada = nuevoArrayDeAdivinacion.every(function (element, i) {
+                        var comparison = element == arrayDeArraysPalabra[indiceDeArrayPalabra][i];
+                        return comparison;
+                    });
+                    adivinacionCorrecta = nuevoArrayDeAdivinacion.some(function (element, i) {
+                        var comparison = element != arrayAdivinacion[i];
+                        return comparison;
+                    });
+                    if (palabraTerminada) {
+                        console.log("Palabra terminada");
+                        indiceDeArrayPalabra++;
+                        nuevoArrayDeAdivinacion = [];
+                        arrayDeArraysPalabra[indiceDeArrayPalabra]
+                            .forEach(function (element) {
+                            nuevoArrayDeAdivinacion.push('_');
+                        });
+                    }
+                    if (adivinacionCorrecta && !yaNoQuedanTurnos) {
+                        juego(arrayDeArraysPalabra, indiceDeArrayPalabra, nuevoArrayDeAdivinacion, numeroDeIntentosActual, numeroDeIntentosTotal);
+                    }
+                    if (!adivinacionCorrecta && !yaNoQuedanTurnos) {
+                        juego(arrayDeArraysPalabra, indiceDeArrayPalabra, nuevoArrayDeAdivinacion, numeroDeIntentosActual - 1, numeroDeIntentosTotal);
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function adivinaLetra(arrayDePalabra, arrayDeAdivinacion) {
+    return __awaiter(this, void 0, void 0, function () {
+        var letraAdivinadaEntrada, letraAdivinada, arrayResultado;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    arrayDeAdivinacion.length = arrayDePalabra.length;
                     return [4 /*yield*/, prompts({
                             type: 'text',
                             name: 'letra',
@@ -60,32 +99,49 @@ function adivinaLetra(stringEntrada) {
                 case 1:
                     letraAdivinadaEntrada = _a.sent();
                     letraAdivinada = letraAdivinadaEntrada.letra;
-                    arrayDeAdivinacion = arrayDePalabra.forEach(function (element) {
+                    arrayResultado = arrayDePalabra
+                        .map(function (element, i) {
                         if (element == letraAdivinada) {
-                            element;
+                            return element;
                         }
                         else {
-                            "_";
+                            return arrayDeAdivinacion[i];
                         }
                     });
-                    return [2 /*return*/, arrayDeAdivinacion];
+                    return [2 /*return*/, arrayResultado];
             }
         });
     });
 }
+function separarPalabras() {
+    var palabrasIniciales = fs.readFileSync('./ahorcado_palabras/ahorcado_palabras.txt').toString();
+    var arrayDePalabras = palabrasIniciales.split(" ");
+    var arrayDeArrayDePalabras = arrayDePalabras
+        .map(function (element) {
+        return element.split("");
+    });
+    return arrayDeArrayDePalabras;
+}
 function main() {
     return __awaiter(this, void 0, void 0, function () {
+        var numeroDeIntentosInicial, numeroDeIntentosDesicion, arrayDePalabra, arrayDeAdivinacionEnBlanco;
         return __generator(this, function (_a) {
-            /*
-                const numeroDeIntentosInicial = await prompts({
-                    type: 'text',
-                    name: 'numero',
-                    message: 'cuantos intentos quieres tener?'
-                });
-                iniciarJuego(numeroDeIntentosInicial.numero);
-            */
-            console.log(adivinaLetra("hola"));
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'text',
+                        name: 'numero',
+                        message: 'cuantos intentos quieres tener?'
+                    })];
+                case 1:
+                    numeroDeIntentosInicial = _a.sent();
+                    numeroDeIntentosDesicion = numeroDeIntentosInicial.numero;
+                    arrayDePalabra = separarPalabras();
+                    arrayDeAdivinacionEnBlanco = ["_", "_", "_", "_"];
+                    return [4 /*yield*/, juego(arrayDePalabra, 0, arrayDeAdivinacionEnBlanco, numeroDeIntentosDesicion, numeroDeIntentosDesicion)];
+                case 2:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
         });
     });
 }
