@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "(tsc transformation.ts || echo ) && node transformation.js"
+    "start": "(tsc main.ts || echo ) && node main.js"
   },
   "author": "",
   "license": "ISC",
