@@ -38,27 +38,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var fs = require("fs-extra");
 var prompts = require("prompts");
-var funcion_menu_1 = require("./funciones/funcion-menu");
-function main() {
+var funcion_juego_1 = require("./funcion-juego");
+var funcion_separar_palabras_1 = require("./funcion-separar-palabras");
+function menu() {
     return __awaiter(this, void 0, void 0, function () {
-        var imagenAhorcado;
+        var numeroDeIntentosInicial, numeroDeIntentosDesicion, arrayDePalabra, arrayDeAdivinacionEnBlanco, imagenAhorcado;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    imagenAhorcado = fs.readFileSync('./ahorcado_imagenes/6.txt', 'utf8');
-                    console.log(imagenAhorcado);
-                    console.log("Bienvenido al juego");
-                    return [4 /*yield*/, prompts({
-                            type: 'text',
-                            name: 'txtxt',
-                            message: 'Aplaste una tecla para empezar'
-                        })];
+                case 0: return [4 /*yield*/, prompts({
+                        type: 'number',
+                        name: 'numero',
+                        message: 'cuantos intentos quieres tener?'
+                    })];
                 case 1:
+                    numeroDeIntentosInicial = _a.sent();
+                    numeroDeIntentosDesicion = numeroDeIntentosInicial.numero;
+                    arrayDePalabra = funcion_separar_palabras_1.separarPalabras();
+                    arrayDeAdivinacionEnBlanco = ["_", "_", "_", "_"];
+                    imagenAhorcado = fs.readFileSync('./ahorcado_imagenes/1.txt', 'utf8');
+                    console.log(imagenAhorcado);
+                    return [4 /*yield*/, funcion_juego_1.juego(arrayDePalabra, 0, arrayDeAdivinacionEnBlanco, numeroDeIntentosDesicion, numeroDeIntentosDesicion)];
+                case 2:
                     _a.sent();
-                    funcion_menu_1.menu();
                     return [2 /*return*/];
             }
         });
     });
 }
-main();
+exports.menu = menu;
