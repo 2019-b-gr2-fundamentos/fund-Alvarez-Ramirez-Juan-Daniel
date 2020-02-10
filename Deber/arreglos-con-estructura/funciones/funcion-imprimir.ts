@@ -5,4 +5,5 @@ export function imprimir(array){
             console.log(`dato: ${array[i]}, posicion: ${i}`)
         }
     };
+    return;
 }

@@ -37,13 +37,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var funcion_imprimir_1 = require("./funcion-imprimir");
+var funcion_escribir_archivo_1 = require("./funcion-escribir-archivo");
 var prompts = require("prompts");
-function actualizar(array) {
+function actualizar(entrada) {
     return __awaiter(this, void 0, void 0, function () {
-        var formatoDeDato, inputDatoPosicion;
+        var array, formatoDeDato, inputDatoPosicion, salida;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    array = entrada.datos;
                     formatoDeDato = [
                         {
                             type: 'number',
@@ -62,7 +64,12 @@ function actualizar(array) {
                     array[inputDatoPosicion.posicion] = inputDatoPosicion.dato;
                     console.log("arreglo actualizado");
                     funcion_imprimir_1.imprimir(array);
-                    return [2 /*return*/, array];
+                    funcion_escribir_archivo_1.escribirArhivo(array, entrada.nombre);
+                    salida = {
+                        datos: array,
+                        nombre: entrada.dato
+                    };
+                    return [2 /*return*/, salida];
             }
         });
     });

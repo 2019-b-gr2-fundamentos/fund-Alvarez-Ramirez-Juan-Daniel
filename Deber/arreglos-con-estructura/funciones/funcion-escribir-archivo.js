@@ -36,59 +36,27 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var funcion_imprimir_1 = require("./funcion-imprimir");
-var funcion_escribir_archivo_1 = require("./funcion-escribir-archivo");
-var prompts = require("prompts");
-function crear() {
+var fs = require("fs-extra");
+function escribirArhivo(array, nombreDeNuevoArray) {
     return __awaiter(this, void 0, void 0, function () {
-        var array, longitud, i, datoDeEntrada, nombreDeNuevoArray, arrayFile, salida;
+        var arrayParaAgregar;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    array = [];
-                    return [4 /*yield*/, prompts({
-                            type: 'number',
-                            name: 'longitud',
-                            message: 'ingrese el tamaño del arreglo'
+                    arrayParaAgregar = "";
+                    array.forEach(function (element) {
+                        arrayParaAgregar = arrayParaAgregar + element + "\n";
+                    });
+                    return [4 /*yield*/, fs.writeFile('./datos/' + nombreDeNuevoArray + '.txt', arrayParaAgregar, function (err) {
+                            if (err)
+                                throw err;
                         })];
                 case 1:
-                    longitud = _a.sent();
-                    i = 0;
-                    _a.label = 2;
-                case 2:
-                    if (!(i < longitud.longitud)) return [3 /*break*/, 5];
-                    return [4 /*yield*/, prompts({
-                            type: 'number',
-                            name: 'dato',
-                            message: 'Ingrese un valor a agregar'
-                        })];
-                case 3:
-                    datoDeEntrada = _a.sent();
-                    array[i] = datoDeEntrada.dato;
-                    _a.label = 4;
-                case 4:
-                    i++;
-                    return [3 /*break*/, 2];
-                case 5: return [4 /*yield*/, prompts({
-                        type: 'text',
-                        name: 'dato',
-                        message: 'Ingrese el nombre con el que quiere guardar los datos'
-                    })];
-                case 6:
-                    nombreDeNuevoArray = _a.sent();
-                    funcion_imprimir_1.imprimir(array);
-                    funcion_escribir_archivo_1.escribirArhivo(array, nombreDeNuevoArray.dato);
-                    arrayFile = {
-                        array: array,
-                        nombreDeNuevoArray: nombreDeNuevoArray
-                    };
-                    salida = {
-                        datos: array,
-                        nombre: nombreDeNuevoArray.dato
-                    };
-                    return [2 /*return*/, salida];
+                    _a.sent();
+                    console.log('Guardado Exitosamente');
+                    return [2 /*return*/];
             }
         });
     });
 }
-exports.crear = crear;
+exports.escribirArhivo = escribirArhivo;

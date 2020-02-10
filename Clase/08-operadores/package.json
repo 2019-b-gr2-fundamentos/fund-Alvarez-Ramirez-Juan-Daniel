@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "(tsc 01-main.ts --target ES5 || echo ) && node 01-main.js"
+    "test": "(tsc 01-main.ts --target ES5 ||  echo ) && node 01-main.js",
+    "filter": "(tsc 02-filter.ts --target ES5 ||  echo ) && node 02-filter.js"
   },
   "author": "",
   "license": "ISC"

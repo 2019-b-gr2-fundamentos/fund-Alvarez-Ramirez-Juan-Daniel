@@ -1,8 +1,14 @@
-import * as fs from {'fs-extra'}
+import * as fs from 'fs-extra'
 
-export function(){
-    const palabrasIniciales:string = fs.readFileSync('C:/Users/USREPS/Documents/GitHub/fund-Alvarez-Ramirez-Juan-Daniel/Deber/arreglos-con-estructura/datos-iniciales/datos-iniciales.txt').toString();
+export function datosIniciales():number[]{
+    const palabrasIniciales:string = fs.readFileSync('./datos/datos-iniciales.txt').toString();
     const arrayDePalabras = palabrasIniciales.split("\n");
-    return arrayDePalabras;
+    const arrayDeNumeros = arrayDePalabras.map(
+        function(element){
+            let elementNumero = Number(element);
+            return elementNumero
+        }
+    );
+    return arrayDeNumeros;
 }
 

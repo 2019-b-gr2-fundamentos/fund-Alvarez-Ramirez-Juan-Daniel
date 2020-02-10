@@ -38,24 +38,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var funcion_imprimir_1 = require("./funcion-imprimir");
 var prompts = require("prompts");
-function eliminar(array) {
+var funcion_escribir_archivo_1 = require("./funcion-escribir-archivo");
+function eliminar(entrada) {
     return __awaiter(this, void 0, void 0, function () {
-        var posicionEntrada, i;
+        var array, posicionEntrada, arrayFiltrado, salida;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, prompts({
-                        type: 'number',
-                        name: 'posicion',
-                        message: 'ingrese la posicion a eliminar'
-                    })];
+                case 0:
+                    array = entrada.datos;
+                    return [4 /*yield*/, prompts({
+                            type: 'number',
+                            name: 'posicion',
+                            message: 'ingrese la posicion a eliminar'
+                        })];
                 case 1:
                     posicionEntrada = _a.sent();
-                    for (i = posicionEntrada.posicion; i < array.length - 1; i++) {
-                        array[i] = array[i + 1];
-                    }
-                    array.pop();
-                    funcion_imprimir_1.imprimir(array);
-                    return [2 /*return*/, array];
+                    arrayFiltrado = array.filter(function (array, index) {
+                        return index != posicionEntrada.posicion;
+                    });
+                    funcion_imprimir_1.imprimir(arrayFiltrado);
+                    funcion_escribir_archivo_1.escribirArhivo(arrayFiltrado, entrada.nombre);
+                    salida = {
+                        datos: array,
+                        nombre: entrada.nombre
+                    };
+                    return [2 /*return*/, salida];
             }
         });
     });

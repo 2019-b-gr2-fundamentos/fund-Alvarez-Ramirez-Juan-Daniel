@@ -9,5 +9,6 @@ function imprimir(array) {
         }
     }
     ;
+    return;
 }
 exports.imprimir = imprimir;
